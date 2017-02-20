@@ -1,8 +1,9 @@
 {
   "name": "bloom",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Minimal JavaScript UI framework",
-  "main": "src/bloom.js",
+  "main": "source/bloom.js",
+  "types": "source/bloom.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,3 +1,6 @@
+// Bloom JS
+// Version 0.1.1
+// By Christopher W. Johnson
 "use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -10,42 +13,41 @@ function generate_element(html) {
     return div.firstChild;
 }
 exports.generate_element = generate_element;
-function get_template(name) {
-    return generate_element(require(name + '.html'));
-}
-exports.get_template = get_template;
-var Comment_Flower = (function () {
-    function Comment_Flower(element) {
+var Common_Flower = (function () {
+    function Common_Flower(element) {
         this.element = element;
     }
-    Comment_Flower.prototype.get_element = function () {
+    Common_Flower.prototype.get_element = function () {
         return this.element;
     };
-    return Comment_Flower;
+    return Common_Flower;
 }());
-exports.Comment_Flower = Comment_Flower;
+exports.Common_Flower = Common_Flower;
 var List_Flower = (function (_super) {
     __extends(List_Flower, _super);
     function List_Flower(element) {
         _super.call(this, element);
+        this.children = [];
     }
     List_Flower.prototype.add_child = function (child) {
         this.children.push(child);
         this.element.appendChild(child.get_element());
     };
     return List_Flower;
-}(Comment_Flower));
+}(Common_Flower));
 exports.List_Flower = List_Flower;
 var Indirect_List_Flower = (function (_super) {
     __extends(Indirect_List_Flower, _super);
-    function Indirect_List_Flower(element, list_element) {
+    function Indirect_List_Flower(element, list_selector) {
         _super.call(this, element);
+        this.children = [];
+        this.list_element = this.element.querySelector(list_selector);
     }
     Indirect_List_Flower.prototype.add_child = function (child) {
         this.children.push(child);
         this.list_element.appendChild(child.get_element());
     };
     return Indirect_List_Flower;
-}(Comment_Flower));
+}(Common_Flower));
 exports.Indirect_List_Flower = Indirect_List_Flower;
 //# sourceMappingURL=bloom.js.map
