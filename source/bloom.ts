@@ -26,6 +26,10 @@ export class Common_Flower implements Flower {
   get_element(): Element {
     return this.element
   }
+
+  find_one(selector: string): Element {
+    return this.element.querySelector(selector)
+  }
 }
 
 export class List_Flower<T extends Flower> extends Common_Flower implements Parent {
@@ -35,8 +39,8 @@ export class List_Flower<T extends Flower> extends Common_Flower implements Pare
     super(element)
   }
 
-  add_child(child: Flower) {
-    this.children.push(<T>child)
+  add_child(child: T) {
+    this.children.push(child)
     this.element.appendChild(child.get_element())
   }
 }
@@ -50,7 +54,7 @@ export class Indirect_List_Flower<T extends Flower> extends Common_Flower implem
     this.list_element = this.element.querySelector(list_selector)
   }
 
-  add_child(child: Flower) {
+  add_child(child: T) {
     this.children.push(<T>child)
     this.list_element.appendChild(child.get_element())
   }

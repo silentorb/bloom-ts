@@ -20,6 +20,9 @@ var Common_Flower = (function () {
     Common_Flower.prototype.get_element = function () {
         return this.element;
     };
+    Common_Flower.prototype.find_one = function (selector) {
+        return this.element.querySelector(selector);
+    };
     return Common_Flower;
 }());
 exports.Common_Flower = Common_Flower;
